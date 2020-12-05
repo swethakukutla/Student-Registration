@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as Mock from 'src/assets/mock/cityMaster.mock';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'student-college-portal';
+  cityList: any;
+  constructor() {
+    this.cityList = Mock.svcGetCityListData['cityDetialList'];
+    // console.log(this.cityList)
+  }
 }
