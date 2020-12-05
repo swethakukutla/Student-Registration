@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 import { CollegeregistrationserviceService } from '../service/collegeregistrationservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration-form',
@@ -9,25 +10,33 @@ import { CollegeregistrationserviceService } from '../service/collegeregistratio
 })
 export class RegistrationFormComponent implements OnInit {
   registrationform: FormGroup;
-  constructor(public formBuilder: FormBuilder, private collegeRegistartionService: CollegeregistrationserviceService) { }
+  trackFlag: boolean;
+  registrationFromData: any;
+  constructor(public formBuilder: FormBuilder, private collegeRegistartionService: CollegeregistrationserviceService, private router: Router) {
+    this.trackFlag = false;
+  }
 
   ngOnInit(): void {
-    // RegistrationForm 
     this.registrationform = this.formBuilder.group({
-      fname: [null, Validators.required],
-      lname: [null, Validators.required],
+      fname: [null, [Validators.required, Validators.pattern("^([a-zA-z\s]{4,32})$")]],
+      lname: [null, [Validators.required, Validators.pattern("^([a-zA-z\s]{4,32})$")]],
       address: [null, Validators.required],
-      email: [null, Validators.required],
+      email: [null, [Validators.required, Validators.pattern("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")]],
       gender: [null, Validators.required]
     });
   }
 
-
   onSave() {
-    const registrationFromData = this.registrationform.value;
-    console.log(registrationFromData)
-    alert("Saved !");
-    this.collegeRegistartionService.saveRegistrationFormData(registrationFromData).subscribe(value => {
+    this.registrationFromData = this.registrationform.value;
+    console.log(this.registrationFromData)
+    alert("Form Saved !");
+    this.collegeRegistartionService.saveRegistrationFormData(this.registrationFromData).subscribe(value => {
     });
+    this.trackFlag = true;
   }
+
+  onBack() {
+    this.router.navigateByUrl('');
+  }
+
 }

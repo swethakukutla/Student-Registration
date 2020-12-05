@@ -1,34 +1,51 @@
 <div class="container">
+  <h1 style="text-align: center;">Registration Form</h1>
   <mat-card-content>
     <form class="my-form" [formGroup]="registrationform">
       <mat-form-field class="full-width">
         <mat-label>First Name</mat-label>
-        <input matInput placeholder="First name" name="fname" formControlName="fname">
+        <input matInput placeholder="First name" formControlName="fname">
       </mat-form-field>
       <br>
       <mat-form-field class="full-width">
         <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Last Name" name="lname" formControlName="lname">
+        <input matInput placeholder="Last Name" formControlName="lname">
       </mat-form-field>
       <br>
 
       <mat-form-field class="full-width">
         <mat-label>Address</mat-label>
-        <input matInput placeholder="Address" name="address" formControlName="address">
+        <input matInput placeholder="Address" formControlName="address">
       </mat-form-field>
       <br>
       <mat-form-field class="full-width">
         <mat-label>Email</mat-label>
-        <input matInput placeholder="Email" name="email" formControlName="email">
+        <input matInput placeholder="Email" formControlName="email">
       </mat-form-field>
       <br>
       <mat-radio-group aria-label="Select an option" formControlName="gender">
         <mat-radio-button value="1">Male</mat-radio-button>
-        <br><br>
-        <mat-radio-button class="example-radio-button" value="2">Female</mat-radio-button>
+        <mat-radio-button style="margin-left: 2%;" class="example-radio-button" value="2">Female</mat-radio-button>
       </mat-radio-group>
       <br><br>
     </form>
-    <button mat-flat-button color="accent" (click)="onSave()">Submit</button>
+    <button mat-flat-button color="accent" (click)="onSave()" [disabled]="!registrationform.valid">Submit</button>
+    <button mat-flat-button style="margin-left: 2%; background-color: grey;" (click)="onBack()">Cancel</button>
   </mat-card-content>
+</div>
+<div>
+  <span *ngIf="trackFlag">
+    <mat-card *ngFor="let registerData of registrationFromData">
+      <mat-card-header>
+        <mat-card-title>Register Details</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p><b>First Name: </b> {{registerData.fname}}</p>
+        <p><b>Last Name: </b>{{registerData.lname}}</p>
+        <p><b>Address: </b> {{registerData.address}}</p>
+        <p><b>Email: </b>{{registerData.email}}</p>
+        <p><b>Gender: </b> {{registerData.gender}}</p>
+      </mat-card-content>
+    </mat-card>
+  </span>
 </div>

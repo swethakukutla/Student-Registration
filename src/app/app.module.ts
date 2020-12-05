@@ -15,7 +15,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { CollegeregistrationserviceService } from './service/collegeregistrationservice.service';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 // import { RegistrationModule } from './registration-form/registration-form.module';
