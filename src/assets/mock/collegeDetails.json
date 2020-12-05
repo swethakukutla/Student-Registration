@@ -19,6 +19,16 @@
              "contact": "8789756743",
              "email":   "David@David.com",
              "hostelsFacilities": "no"
-        }
+        },
+        {
+          "id": 3,
+          "name": "D.A.V college",
+          "code": "DAV123455",
+          "startedYear": "1 Jan 1993",
+          "address": "Bangalore",
+          "contact": "8789756743",
+          "email":   "DAV@DAV.com",
+          "hostelsFacilities": "no"
+     }
     ]
 }

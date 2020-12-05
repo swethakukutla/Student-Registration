@@ -52,5 +52,5 @@
     <p><b>Email: </b>{{collegeDetailDataList.email}}</p>
     <p><b>Hostel Facilities: </b>{{collegeDetailDataList.hostelsFacilities}}</p>
   </mat-card-content>
-  <button mat-flat-button color="accent">Register</button>
+  <button mat-flat-button color="accent" [routerLink]="['/register']" (click)="goToRegistrationForm()">Register</button>
 </mat-card>

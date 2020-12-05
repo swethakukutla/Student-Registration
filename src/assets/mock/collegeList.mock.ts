@@ -2,22 +2,22 @@ export const svcGetCollegeListData = {
     "collegeListData": [
         {
             "collegeId": 1,
-             "collegeName": "xyz college",
-             "cityId": 1,
+            "collegeName": "Loyola college",
+            "cityId": 1,
         },
         {
             "collegeId": 2,
-            "collegeName": "abc college",
+            "collegeName": "David Memorial college",
             "cityId": 1,
         },
         {
             "collegeId": 3,
-             "collegeName": "def college",
-             "cityId": 2,
+            "collegeName": "D.A.V college",
+            "cityId": 2,
         },
         {
             "collegeId": 4,
-            "collegeName": "ghi college",
+            "collegeName": "Gautham college",
             "cityId": 2,
         }
     ]

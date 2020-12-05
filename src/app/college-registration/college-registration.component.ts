@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CollegeDetailsResponse } from '../models/collegedetails.interface';
 import { CollegeregistrationserviceService } from '../service/collegeregistrationservice.service';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
@@ -14,12 +15,11 @@ import * as collegeMock from 'src/assets/mock/collegeList.mock';
 export class CollegeRegistrationComponent implements OnInit {
   // collegeDetails: CollegeDetailsResponse;
   form: FormGroup;
-  // registrationform: FormGroup;
   cityList: any;
   collegeList: any;
   filterCollegeList: any = [];
   collegeDetails: any = [];
-  constructor(private collegeRegistartionService: CollegeregistrationserviceService, public formBuilder: FormBuilder,) {
+  constructor(private collegeRegistartionService: CollegeregistrationserviceService, public formBuilder: FormBuilder, private router: Router) {
     this.cityList = cityMock.svcGetCityListData['cityDetialList'];
     this.collegeList = collegeMock.svcGetCollegeListData['collegeListData'];
   }
@@ -30,20 +30,6 @@ export class CollegeRegistrationComponent implements OnInit {
       city: [null, Validators.required],
       college: [null, Validators.required]
     });
-
-
-    // RegistrationForm 
-    // this.registrationform = this.formBuilder.group({
-    //   fname: [null, Validators.required],
-    //   lname: [null, Validators.required],
-    //   address: [null, Validators.required],
-    //   email: [null, Validators.required],
-    //   gender: [null, Validators.required]
-    // });
-
-    // this.collegeRegistartionService.getCollegeDetails().subscribe((data) => {
-    //   this.collegeDetails = data;
-    // });
   }
 
   onCityChange(selectedCity) {
@@ -56,6 +42,7 @@ export class CollegeRegistrationComponent implements OnInit {
   }
 
   collegeSelected(selectedCollege): any {
+    this.collegeDetails = [];
     this.collegeRegistartionService.getCollegeDetails().subscribe((data) => {
       data['collegeDetailDataList'].forEach(element => {
         if (element.id === selectedCollege.value) {
@@ -65,10 +52,7 @@ export class CollegeRegistrationComponent implements OnInit {
     });
   }
 
-
-  // onSave() {
-  //   const registrationFromData = this.registrationform.value;
-  //   this.collegeRegistartionService.saveRegistrationFormData(registrationFromData).subscribe(value => {
-  //   });
-  // }
+  goToRegistrationForm(): void {
+    this.router.navigateByUrl('/register');
+  }
 }
