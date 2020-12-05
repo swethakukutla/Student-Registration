@@ -1,15 +1,56 @@
-<mat-card>
+<!-- Aprajita -->
+
+<form [formGroup]="form">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-card class="col-md-12">
+        <div class="col-md-12" style="padding-top: 2%;">
+          <span>
+            <strong> City : </strong>
+            <mat-form-field appearance="fill">
+              <mat-select matInput formControlName="city" (selectionChange)="onCityChange($event)">
+                <mat-option>--(select)--</mat-option>
+                <mat-option *ngFor="let cityData of cityList" [value]="cityData.cityId">
+                  <span>
+                    {{cityData.cityName}}
+                  </span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </span>
+          <span style="margin-left: 20%;">
+            <strong> College : </strong>
+            <mat-form-field appearance="fill" multiple>
+              <mat-select matInput formControlName="college" (selectionChange)="collegeSelected($event)">
+                <mat-option>--(select)--</mat-option>
+                <mat-option *ngFor="let collegeData of filterCollegeList" [value]="collegeData.collegeId">
+                  <span>
+                    {{collegeData.collegeName}}
+                  </span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </span>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</form>
+<!-- Aprajita -->
+
+
+<mat-card *ngFor="let collegeDetailDataList of collegeDetails">
   <mat-card-header>
     <mat-card-title>College Details</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <p><b>Name: </b> {{collegeDetails?.collegeDetailDataList[0].name}}</p>
-    <p><b>Code: </b>{{collegeDetails?.collegeDetailDataList[0].code}}</p>
-    <p><b>Started in the Year: </b> {{collegeDetails?.collegeDetailDataList[0].startedYear}}</p>
-    <p><b>Address: </b>{{collegeDetails?.collegeDetailDataList[0].address}}</p>
-    <p><b>Contact: </b> {{collegeDetails?.collegeDetailDataList[0].contact}}</p>
-    <p><b>Email: </b>{{collegeDetails?.collegeDetailDataList[0].email}}</p>
-    <p><b>Hostel Facilities: </b>{{collegeDetails?.collegeDetailDataList[0].hostelsFacilities}}</p>
+    <p><b>Name: </b> {{collegeDetailDataList.name}}</p>
+    <p><b>Code: </b>{{collegeDetailDataList.code}}</p>
+    <p><b>Started in the Year: </b> {{collegeDetailDataList.startedYear}}</p>
+    <p><b>Address: </b>{{collegeDetailDataList.address}}</p>
+    <p><b>Contact: </b> {{collegeDetailDataList.contact}}</p>
+    <p><b>Email: </b>{{collegeDetailDataList.email}}</p>
+    <p><b>Hostel Facilities: </b>{{collegeDetailDataList.hostelsFacilities}}</p>
   </mat-card-content>
   <button mat-flat-button color="accent">Register</button>
 </mat-card>

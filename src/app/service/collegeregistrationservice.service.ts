@@ -10,7 +10,11 @@ export class CollegeregistrationserviceService {
 
   constructor(private http: HttpClient) { }
 
-getCollegeDetails(): Observable<CollegeDetailsResponse>{
+  getCollegeDetails(): Observable<CollegeDetailsResponse> {
     return this.http.get<CollegeDetailsResponse>('../../assets/mock/collegeDetails.json');
+  }
+
+  saveRegistrationFormData(data) {
+    return this.http.post('/saveForm', data);
   }
 }
