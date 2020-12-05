@@ -1,0 +1,24 @@
+ {
+    "collegeDetailDataList": [
+        {
+             "id": 1,
+             "name": "Loyola college",
+             "code": "Loyola1234",
+             "startedYear": "1 Jan 1991",
+             "address": "Hyderabad",
+             "contact": "9677825677",
+             "email":   "Loyola@gmail.com",
+             "hostelsFacilities": "yes"
+        },
+        {
+             "id": 2,
+             "name": "David Memorial college",
+             "code": "David123455",
+             "startedYear": "1 Jan 1991",
+             "address": "Hyderabad",
+             "contact": "8789756743",
+             "email":   "David@David.com",
+             "hostelsFacilities": "no"
+        }
+    ]
+}
